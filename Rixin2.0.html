@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="./css/rixin2.0.css">
   <!--<link rel="stylesheet" href="./css/style.css">-->
   <link rel="stylesheet" href="./css/font-awesome.min.css">
+  <link rel="stylesheet" href="./weather/iconfont.css">
   <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
@@ -576,6 +577,99 @@
     		</style>
     	</div>
     </footer>
+
+    <script src="./js/hmac-sha1.js" charset="utf-8"></script>
+    <script>
+      /******** 本示例仅做开发参考使用，不建议在生产环境下暴露 key！ ********/
+
+      var UID = "U646047955"; // 测试用 用户ID，请更换成您自己的用户ID
+      var KEY = "exepttptxxdy5dxm"; // 测试用key，请更换成您自己的 Key
+      var API = "http://api.seniverse.com/v3/weather/now.json"; // 获取天气实况
+      var LOCATION = "nanchang"; // 除拼音外，还可以使用 v3 id、汉语等形式
+
+      // 获取当前时间戳
+      var ts = Math.floor((new Date()).getTime() / 1000);
+
+      // 构造验证参数字符串
+      var str = "ts=" + ts + "&uid=" + UID;
+
+      // 使用 HMAC-SHA1 方式，以 API 密钥（key）对上一步生成的参数字符串（raw）进行加密
+      // 并将加密结果用 base64 编码，并做一个 urlencode，得到签名 sig
+      var sig = CryptoJS.HmacSHA1(str, KEY).toString(CryptoJS.enc.Base64);
+      sig = encodeURIComponent(sig);
+      str = str + "&sig=" + sig;
+
+      var jsonpCallback = function(data) {
+        // var obj = document.getElementById('content');
+        var weather = data.results[0];
+        console.log(weather);
+        var code = weather.now.code;
+        var temp = document.querySelector(".temp");
+        temp.innerText = weather.now.temperature + "℃";
+        var icon = document.querySelector(".weather .icon");
+        console.log(icon);
+        // console.log(code);
+        switch (code) {
+          case "0":
+          case "1":
+          case "2":
+          case "3":
+              icon.setAttribute("class","iconfont icon-qingtian");
+            break;
+          case "4":
+          case "5":
+          case "6":
+          case "7":
+          case "8":
+              icon.setAttribute("class","iconfont icon-duoyun");
+            break;
+          case "9":
+              icon.setAttribute("class","iconfont icon-duoyunzhuanyin");
+            break;
+          case "10":
+          case "11":
+          case "12":
+              icon.setAttribute("class","iconfont icon-leizhenyu");
+            break;
+          case "13":
+              icon.setAttribute("class","iconfont icon-xiaoyu");
+            break;
+          case "14":
+              icon.setAttribute("class","iconfont icon-zhongyu");
+            break;
+          case "15":
+          case "16":
+          case "17":
+          case "18":
+              icon.setAttribute("class","iconfont icon-baoyu");
+            break;
+          default:
+              icon.setAttribute("class","iconfont icon-feng");
+            break;
+
+
+        }
+      }
+
+      // 构造最终请求的 url
+      var url = API + "?location=" + LOCATION + "&" + str + "&callback=jsonpCallback";
+
+      // console.log(url);
+      // // 向 HTML 中动态插入 script 标签，通过 JSONP 的方式进行调用
+      // var newScript = document.createElement('script');
+      // newScript.type = 'text/javascript';
+      // newScript.src = url;
+      // $('body').append(newScript);
+
+    </script>
+    <script src="http://api.seniverse.com/v3/weather/now.json?location=nanchang&ts=1500538522&uid=U646047955&sig=SykRKTzx%2BTxc067WQlCZYQAgOHw%3D&callback=jsonpCallback&_=1500538522132" charset="utf-8"></script>
+    <style media="screen">
+      .iconfont{
+        font-size: 50px;
+        color: rgb(29, 150, 226);
+      }
+    </style>
 </body>
-<script src="./js/index.js" charset="utf-8"></script>
+<!-- <script src="./js/jsonp.js" charset="utf-8"></script> -->
+<!-- <script src="http://api.seniverse.com/v3/weather/now.json?location=nanchang&ts=1500374815&uid=U646047955&sig=s3q8BXFrLX%2FpkOGXXqukjJzTo1Y%3D&callback=jsonpCallback" charset="utf-8"></script> -->
 </html>
