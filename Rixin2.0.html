@@ -7,7 +7,8 @@
   <!--<link rel="stylesheet" href="./css/style.css">-->
   <link rel="stylesheet" href="./css/font-awesome.min.css">
   <link rel="stylesheet" href="./weather/iconfont.css">
-  <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+  <!-- <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script> -->
+  <script src="./js/jquery.js" charset="utf-8"></script>
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
@@ -653,16 +654,16 @@
 
       // 构造最终请求的 url
       var url = API + "?location=" + LOCATION + "&" + str + "&callback=jsonpCallback";
-
       // console.log(url);
-      // // 向 HTML 中动态插入 script 标签，通过 JSONP 的方式进行调用
-      // var newScript = document.createElement('script');
-      // newScript.type = 'text/javascript';
-      // newScript.src = url;
-      // $('body').append(newScript);
+      console.log(url);
+      // 向 HTML 中动态插入 script 标签，通过 JSONP 的方式进行调用
+      var newScript = document.createElement('script');
+      newScript.type = 'text/javascript';
+      newScript.src = url;
+      $('body').append(newScript);
 
     </script>
-    <script src="http://api.seniverse.com/v3/weather/now.json?location=nanchang&ts=1500538522&uid=U646047955&sig=SykRKTzx%2BTxc067WQlCZYQAgOHw%3D&callback=jsonpCallback&_=1500538522132" charset="utf-8"></script>
+    <!-- <script src="http://api.seniverse.com/v3/weather/now.json?location=nanchang&ts=150060167…uid=U646047955&sig=QcFZ%2BpxFugxMTaucFMbDRLWwWpc%3D&callback=jsonpCallback" charset="utf-8"></script> -->
     <style media="screen">
       .iconfont{
         font-size: 50px;
