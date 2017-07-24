@@ -1,0 +1,84 @@
+.left{
+  width: 78%;
+  float: left;
+  /*background-color: #876;*/
+}
+.left_top{
+  width: 100%;
+  background-color: rgb(58, 58, 58);
+  padding: 10px 0px;
+  color: #fff;
+  font-size: 14px;
+}
+.left_top span{
+  background-color: rgb(29, 150, 226);
+  margin-right: 10px;
+  padding: 10px 5px;
+  /*height: 100%;*/
+}
+.right{
+  width: 20%;
+  /*height: 200px;*/
+  margin-left: 2%;
+  /*background-color: #289;*/
+  float: left;
+}
+.artical{
+  width: 95%;
+  margin-top: 40px;
+  padding: 0% 1% 0% 4%;
+}
+.artical ul{
+  width: 100%;
+}
+.artical ul li {
+  width: 100%;
+  height: 200px;
+}
+.pic{
+  width: 38%;
+  height: 100%;
+  background-image: url();
+  float: left;
+  background-color: rgb(25, 25, 25);
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+  /*position: relative;*/
+}
+.pic .icon{
+  /*position: absolute;*/
+  float: left;
+  width: auto;
+  margin-top: 56%;
+  padding: 0px 5px;
+  font-size: 12px;
+  height: 34px;
+  margin-right: 5px;
+  cursor: pointer;
+  /*height: 30px;*/
+  border-radius: 32px;
+}
+.pic .icon:nth-child(1) {
+  background-color: rgb(185, 73, 213);
+}
+.pic .icon:nth-child(2) {
+  background-color: rgb(255, 118, 140);
+}
+.pic .icon:nth-child(3) {
+  background-color: rgb(46, 167, 201);
+}
+.con{
+  width: 59%;
+  margin-left: 3%;
+  /*background-color: #876;*/
+  float: left;
+}
+.con h3{
+  font-weight: 400;
+  padding: 5px 2px;
+}
+.con .text{
+  color: rgb(150, 149, 149);
+  font-size: 12px;
+}
